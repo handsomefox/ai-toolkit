@@ -34,10 +34,16 @@ Codex invokes skills as `$name` rather than `/name`.
 up the analyzer table without being asked. The other nine stay explicit — they
 are workflows you choose, not background knowledge.
 
-Codex disables five skills through `[[skills.config]]` in `config.toml`:
-caveman, dependency-upgrade, remove-slop, tech-debt-pass, test-gap. Claude Code
-has no per-skill toggle, so all ten are live there; delete the directory to
-match.
+Five skills are off: caveman, dependency-upgrade, remove-slop, tech-debt-pass,
+test-gap. They overlap the other five — `tech-debt-pass` and `test-gap` restate
+parts of `diff-review`, and `tech-debt-pass` restates `go-tooling`'s analyzer
+table for Go — and `remove-slop` deletes defensive code on a judgment call it
+gives no test for.
+
+Both kits keep all ten files so re-enabling is a config change, not a hunt.
+Codex disables its five through `[[skills.config]]` in `config.toml`. Claude
+Code has no per-skill toggle, so there the five are simply not copied into
+`~/.claude/skills/`.
 
 ## Shared decisions
 

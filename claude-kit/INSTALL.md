@@ -1,6 +1,9 @@
 # Install (Claude Code)
 
-Copy `skills/*` to `~/.claude/skills/`, replacing what is there.
+Copy `skills/*` to `~/.claude/skills/`, replacing what is there — except for
+caveman, dependency-upgrade, remove-slop, tech-debt-pass, and test-gap. Claude
+Code has no per-skill toggle, so leaving those five uncopied is how they stay
+off. See the README for why. Copy the directory in to re-enable one.
 
 Copy `CLAUDE.md` to `~/.claude/CLAUDE.md`.
 
