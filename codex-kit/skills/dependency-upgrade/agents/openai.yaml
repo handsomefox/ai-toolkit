@@ -1,0 +1,6 @@
+interface:
+  display_name: "Dependency Upgrade"
+  short_description: "Safely migrate one dependency version"
+  default_prompt: "Use $dependency-upgrade to migrate this dependency safely."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Commit Split"
+  short_description: "Plan atomic commits from a mixed tree"
+  default_prompt: "Use $commit-split to organize my working tree into atomic commits."
+policy:
+  allow_implicit_invocation: false

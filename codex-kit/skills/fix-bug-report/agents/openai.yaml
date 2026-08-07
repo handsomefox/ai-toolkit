@@ -1,0 +1,6 @@
+interface:
+  display_name: "Fix Bug Report"
+  short_description: "Reproduce, fix, and verify a bug"
+  default_prompt: "Use $fix-bug-report to investigate and fix this bug report."
+policy:
+  allow_implicit_invocation: false

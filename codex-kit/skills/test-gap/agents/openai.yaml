@@ -1,0 +1,6 @@
+interface:
+  display_name: "Test Gap"
+  short_description: "Find consequential untested branches"
+  default_prompt: "Use $test-gap to identify missing tests in this diff."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,89 @@
+# Stable global Codex defaults. Merge these settings into ~/.codex/config.toml.
+# Machine-specific configuration is deliberately excluded: credential store,
+# writable roots, project trust levels, TUI theme, and notification setup.
+
+# Model
+model = "gpt-5.6-terra"
+personality = "pragmatic"
+
+model_reasoning_effort = "medium"
+model_reasoning_summary = "detailed"
+model_verbosity = "medium"
+
+# Keep deeper reasoning for planning only.
+plan_mode_reasoning_effort = "high"
+
+# Compact before entering GPT-5.6's long-context pricing tier.
+model_auto_compact_token_limit = 272000
+
+# Include any carried compacted prefix in the threshold.
+model_auto_compact_token_limit_scope = "total"
+
+# Use CLAUDE.md when AGENTS.md is not present.
+project_doc_fallback_filenames = ["CLAUDE.md"]
+
+# Keep normal operations inside the workspace sandbox.
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+sandbox_mode = "workspace-write"
+service_tier = "default"
+web_search = "cached"
+
+[features]
+js_repl = false
+memories = true
+
+# Memory subsystem stays loaded but neither reads nor writes: accumulated
+# memories cost context on every turn and drift out of date.
+[memories]
+generate_memories = false
+use_memories = false
+
+[sandbox_workspace_write]
+# Keep arbitrary command-line network access behind approval.
+network_access = false
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = false
+
+[plugins."sites@openai-bundled"]
+enabled = false
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = false
+
+[plugins."visualize@openai-bundled"]
+enabled = false
+
+# Disabled kit skills. These paths assume the layout in INSTALL.md.
+[[skills.config]]
+enabled = false
+path = "~/.agents/skills/caveman/SKILL.md"
+
+[[skills.config]]
+enabled = false
+path = "~/.agents/skills/dependency-upgrade/SKILL.md"
+
+[[skills.config]]
+enabled = false
+path = "~/.agents/skills/remove-slop/SKILL.md"
+
+[[skills.config]]
+enabled = false
+path = "~/.agents/skills/tech-debt-pass/SKILL.md"
+
+[[skills.config]]
+enabled = false
+path = "~/.agents/skills/test-gap/SKILL.md"

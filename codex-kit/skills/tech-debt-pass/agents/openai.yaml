@@ -1,0 +1,6 @@
+interface:
+  display_name: "Tech Debt Pass"
+  short_description: "Audit bounded code for concrete debt"
+  default_prompt: "Use $tech-debt-pass to audit this package before making changes."
+policy:
+  allow_implicit_invocation: false

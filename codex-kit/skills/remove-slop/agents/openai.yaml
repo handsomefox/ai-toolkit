@@ -1,0 +1,6 @@
+interface:
+  display_name: "Remove Slop"
+  short_description: "Clean AI-style excess from a branch"
+  default_prompt: "Use $remove-slop to clean unnecessary AI-style code from this branch."
+policy:
+  allow_implicit_invocation: false

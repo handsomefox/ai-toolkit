@@ -1,0 +1,6 @@
+interface:
+  display_name: "Draft PR and Commit"
+  short_description: "Draft concise PR and commit copy"
+  default_prompt: "Use $draft-pr-and-commit to draft PR copy for my current branch."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Diff Review"
+  short_description: "Review changed code for actionable defects"
+  default_prompt: "Use $diff-review to review my staged changes."
+policy:
+  allow_implicit_invocation: false

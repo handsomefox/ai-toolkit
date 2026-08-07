@@ -1,0 +1,6 @@
+interface:
+  display_name: "Go Tooling"
+  short_description: "Choose focused analyzers for Go work"
+  default_prompt: "Use $go-tooling to choose the right analyzers for this Go task."
+policy:
+  allow_implicit_invocation: true
