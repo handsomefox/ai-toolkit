@@ -5,6 +5,10 @@ ships a `SKILL.md` and an `agents/openai.yaml` carrying its invocation policy.
 
 Copy `AGENTS.md` to `~/.codex/AGENTS.md`.
 
+Copy `rules/default.rules` to `~/.codex/rules/default.rules`. These are the
+command prefixes that skip an approval prompt — the Codex counterpart to
+`permissions.allow` in the Claude kit. They are not part of the original kit.
+
 Merge `config.toml` into `~/.codex/config.toml`, and expand the `~` in the
 `[[skills.config]]` paths — Codex wants them absolute.
 

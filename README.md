@@ -9,6 +9,7 @@ This repo tracks the installed state; edit here, then copy into place.
 | Global instructions | `~/.claude/CLAUDE.md` | `~/.codex/AGENTS.md` |
 | Skills | `~/.claude/skills/` | `~/.agents/skills/` |
 | Configuration | `~/.claude/settings.json` | `~/.codex/config.toml` |
+| Command approvals | `permissions.allow` in `settings.json` | `~/.codex/rules/default.rules` |
 
 See each kit's `INSTALL.md` for the copy steps.
 
