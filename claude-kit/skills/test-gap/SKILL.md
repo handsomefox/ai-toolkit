@@ -1,6 +1,6 @@
 ---
 name: test-gap
-description: "Find changed branches that no test meaningfully asserts, ranked by the consequence if they are wrong. Use explicitly when the user asks to review a diff for coverage, identify missing tests before merging, or inspect test gaps in a branch or package. Do not write tests unless asked afterward."
+description: "Find changed branches that no test meaningfully asserts, ranked by the consequence if they are wrong. Use when the user asks to review a diff for coverage, identify missing tests before merging, or inspect test gaps in a branch or package. Do not write tests unless asked afterward."
 disable-model-invocation: true
 argument-hint: [diff, branch, or package]
 allowed-tools: Read, Grep, Glob, Bash

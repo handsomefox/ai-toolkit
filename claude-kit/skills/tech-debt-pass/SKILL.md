@@ -1,6 +1,6 @@
 ---
 name: tech-debt-pass
-description: "Audit a bounded scope for correctness risk, complexity, dead code, inconsistency, and measured performance problems, then report before changing anything. Use explicitly when the user asks to simplify, refactor, clean up, or speed up a specific package, directory, or diff. Do not use for feature work, bug fixes, or whole-repository sweeps."
+description: "Audit a bounded scope for correctness risk, complexity, dead code, inconsistency, and measured performance problems, then report before changing anything. Use when the user asks to simplify, refactor, clean up, or speed up a specific package, directory, or diff. Do not use for feature work, bug fixes, or whole-repository sweeps."
 disable-model-invocation: true
 argument-hint: [package or directory path]
 allowed-tools: Read, Grep, Glob, Edit, Bash

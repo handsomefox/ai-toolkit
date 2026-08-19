@@ -1,8 +1,8 @@
 # AI toolkit
 
-One workflow set, two harnesses. `claude-kit/` and `codex-kit/` hold the same
-ten skills plus the global instruction file and configuration each tool reads.
-This repo tracks the installed state; edit here, then copy into place.
+One workflow set, two coding harnesses. `claude-kit/` and `codex-kit/` hold the
+same 14 skills plus the global instruction file and portable configuration each
+tool reads. This repo mirrors the curated installed state.
 
 | | Claude Code | Codex |
 | --- | --- | --- |
@@ -11,67 +11,61 @@ This repo tracks the installed state; edit here, then copy into place.
 | Configuration | `~/.claude/settings.json` | `~/.codex/config.toml` |
 | Command approvals | `permissions.allow` in `settings.json` | `~/.codex/rules/default.rules` |
 
-See each kit's `INSTALL.md` for the copy steps.
+See each kit's `INSTALL.md` for installation. See `CHAT-SKILLS.md` for which
+skills are worth carrying into ChatGPT or Claude.ai.
 
 ## Skills
 
-| Skill | Invocation | Activation |
+| Skill | Activation | Purpose |
 | --- | --- | --- |
-| diff-review | `/diff-review` | Explicit only |
-| tech-debt-pass | `/tech-debt-pass` | Explicit only |
-| dependency-upgrade | `/dependency-upgrade` | Explicit only |
-| test-gap | `/test-gap` | Explicit only |
-| commit-split | `/commit-split` | Explicit only |
-| go-tooling | `/go-tooling` or matching Go work | Explicit or implicit |
-| draft-pr-and-commit | `/draft-pr-and-commit` | Explicit only |
-| fix-bug-report | `/fix-bug-report` | Explicit only |
-| remove-slop | `/remove-slop` | Explicit only |
-| caveman | `/caveman` | Explicit only |
+| `go-tooling` | Implicit or explicit | Go analyzers and verification tools beyond the standard toolchain |
+| `grilling` | Implicit or explicit | Stress-test a plan through dependency-ordered questions |
+| `resolving-merge-conflicts` | Implicit or explicit | Resolve merge/rebase conflicts from both sides' intent |
+| `unslop` | Implicit or explicit | Remove AI-writing tells and preserve a human voice |
+| `caveman` | Explicit only | Compact technical communication mode |
+| `commit-split` | Explicit only | Split a mixed working tree into atomic commits |
+| `diff-review` | Explicit only | Review a PR, staged diff, or branch diff |
+| `draft-pr-and-commit` | Explicit only | Draft PR and commit copy from repository state |
+| `fix-bug-report` | Explicit only | Confirm, reproduce, regression-test, fix, and verify a defect |
+| `tdd` | Explicit only | Run a focused red-green bug-fix workflow |
+| `tech-debt-pass` | Explicit only | Bounded code-health audit with evidence before edits |
+| `technical-writing` | Explicit only | Diátaxis + developer style + STE + Global English |
+| `test-gap` | Explicit only | Find changed behavior without meaningful test assertions |
+| `unslop-code` | Explicit only | Remove branch-introduced AI-style code excess |
 
-Codex invokes skills as `$name` rather than `/name`.
+Claude Code invokes skills as `/name`. Codex invokes them as `$name`.
 
-`go-tooling` is the only skill the model may load on its own, so Go work picks
-up the analyzer table without being asked. The other nine stay explicit — they
-are workflows you choose, not background knowledge.
-
-Five skills are off: caveman, dependency-upgrade, remove-slop, tech-debt-pass,
-test-gap. They overlap the other five — `tech-debt-pass` and `test-gap` restate
-parts of `diff-review`, and `tech-debt-pass` restates `go-tooling`'s analyzer
-table for Go — and `remove-slop` deletes defensive code on a judgment call it
-gives no test for.
-
-Both kits keep all ten files so re-enabling is a config change, not a hunt.
-Codex disables its five through `[[skills.config]]` in `config.toml`. Claude
-Code has no per-skill toggle, so there the five are simply not copied into
-`~/.claude/skills/`.
+The four implicit skills are reference or workflow knowledge that is useful when
+the task itself clearly calls for it. The other ten remain explicit because
+they change workflow, scope, or output enough that the user should choose when
+they run.
 
 ## Shared decisions
 
 **No format-on-edit hook.** A post-edit formatter rewrites the file underneath
-the model, which forces a re-read and costs a tool call on every single edit.
-Formatting is checkpoint work instead: run it once after a coherent edit set.
-Both instruction files say so, and `go-tooling` prefers `gofumpt -l .` over
-`gofumpt -w .` for the same reason.
+the model and forces unnecessary rereads. Formatting is checkpoint work after a
+coherent edit set.
 
-**Memory off.** `autoMemoryEnabled = false` on Claude, `generate_memories` and
-`use_memories` false on Codex. Accumulated memories are billed as context on
-every turn and drift out of date faster than they earn their keep.
+**Memory off.** `autoMemoryEnabled = false` on Claude. Codex keeps the memory
+subsystem loaded but disables both generation and use. Long-lived automatic
+memory costs context and can drift out of date.
 
-**Compaction below the long-context tier.** Codex compacts at 272000 tokens,
-scoped to the total including any carried prefix, to stay under GPT-5.6's
-long-context pricing step.
+**Compaction before the long-context pricing tier.** Codex compacts at 272000
+tokens, scoped to the total including any carried prefix. Claude Code uses an
+`autoCompactWindow` of 512000.
 
-## Divergence from the two harnesses
+## Harness differences
 
-The instruction files differ only where the tooling does. Codex gets `rg`,
-`rg --files`, and `apply_patch`; Claude Code gets Grep, Glob, and Edit/Write,
-because its built-ins return structured results and do not consume permission
-prompts. Everything downstream of that — `ast-grep`, LSP for symbol queries,
-`jq`/`yq`, `fd` for file metadata, non-interactive commands, `tldr` — is
-identical.
+The global instruction files differ only where the tools differ. Codex uses
+`rg`, `rg --files`, and `apply_patch`. Claude Code uses Grep, Glob, and
+Edit/Write. Both prefer LSP for symbol queries, `ast-grep` for structural
+search, `jq`/`yq` for structured data, `fd` for file metadata, and
+non-interactive commands.
 
-Claude Code skills carry frontmatter Codex expresses in `agents/openai.yaml`:
-`disable-model-invocation` maps to `policy.allow_implicit_invocation`.
-`allowed-tools` and `argument-hint` have no Codex counterpart; on Claude they
-enforce what the skill prose only asserts, such as `diff-review` and
-`draft-pr-and-commit` being unable to edit files.
+Claude Code expresses manual invocation with `disable-model-invocation: true`.
+Codex expresses the same policy in `agents/openai.yaml` with
+`policy.allow_implicit_invocation: false`.
+
+The Codex kit deliberately excludes machine-specific values such as credential
+storage, writable roots, TUI theme, project trust, and notification setup.
+Merge those locally rather than copying them between machines.

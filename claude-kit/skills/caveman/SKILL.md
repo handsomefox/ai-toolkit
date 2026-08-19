@@ -1,6 +1,6 @@
 ---
 name: caveman
-description: "Use an explicitly requested compact technical communication mode. Use only when the user invokes /caveman, asks for caveman mode, or explicitly selects lite, full, or ultra brevity; never infer it from a generic request to be brief."
+description: "Use an explicitly requested compact technical communication mode. Use only when the user invokes $caveman, asks for caveman mode, or explicitly selects lite, full, or ultra brevity; never infer it from a generic request to be brief."
 disable-model-invocation: true
 ---
 

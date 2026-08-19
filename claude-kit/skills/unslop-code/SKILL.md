@@ -1,11 +1,11 @@
 ---
-name: remove-slop
-description: "Remove unnecessary AI-style code from the current branch while preserving behavior and local conventions. Use explicitly when the user asks to clean up AI-generated code, reduce boilerplate, remove overengineering, or invokes /remove-slop."
+name: unslop-code
+description: "Remove unnecessary AI-style code from the current branch while preserving behavior and local conventions. Use explicitly when the user asks to clean up AI-generated code, reduce boilerplate, remove overengineering, or invokes /unslop-code."
 disable-model-invocation: true
 allowed-tools: Read, Grep, Glob, Edit, Bash
 ---
 
-# Remove slop
+# Unslop code
 
 Compare the current branch with its default branch. Remove only branch-introduced excess that conflicts with surrounding code:
 

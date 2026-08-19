@@ -1,0 +1,6 @@
+interface:
+  display_name: "Technical Writing"
+  short_description: "Write technical docs for first-read clarity"
+  default_prompt: "Use $technical-writing to write or review this technical document."
+policy:
+  allow_implicit_invocation: false

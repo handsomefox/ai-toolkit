@@ -22,8 +22,9 @@
     ],
     "defaultMode": "auto"
   },
+  "autoCompactWindow": 512000,
   "model": "opus",
-  "fallbackModel": ["sonnet", "opus"],
+  "fallbackModel": ["sonnet"],
   "disableClaudeAiConnectors": true,
   "autoMemoryEnabled": false,
   "enableArtifact": false,

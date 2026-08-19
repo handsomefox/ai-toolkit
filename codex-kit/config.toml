@@ -3,7 +3,7 @@
 # writable roots, project trust levels, TUI theme, and notification setup.
 
 # Model
-model = "gpt-5.6-terra"
+model = "gpt-5.6-sol"
 personality = "pragmatic"
 
 model_reasoning_effort = "medium"
@@ -66,24 +66,3 @@ enabled = false
 
 [plugins."visualize@openai-bundled"]
 enabled = false
-
-# Disabled kit skills. These paths assume the layout in INSTALL.md.
-[[skills.config]]
-enabled = false
-path = "~/.agents/skills/caveman/SKILL.md"
-
-[[skills.config]]
-enabled = false
-path = "~/.agents/skills/dependency-upgrade/SKILL.md"
-
-[[skills.config]]
-enabled = false
-path = "~/.agents/skills/remove-slop/SKILL.md"
-
-[[skills.config]]
-enabled = false
-path = "~/.agents/skills/tech-debt-pass/SKILL.md"
-
-[[skills.config]]
-enabled = false
-path = "~/.agents/skills/test-gap/SKILL.md"

@@ -1,23 +1,23 @@
 # Install (Codex)
 
-Copy `skills/*` to `~/.agents/skills/`, replacing what is there. Each skill
-ships a `SKILL.md` and an `agents/openai.yaml` carrying its invocation policy.
+Copy `skills/*` to `~/.agents/skills/`, replacing the toolkit-managed skill
+directories already there. Each skill ships a `SKILL.md` and an
+`agents/openai.yaml` with its invocation policy.
 
 Copy `AGENTS.md` to `~/.codex/AGENTS.md`.
 
-Copy `rules/default.rules` to `~/.codex/rules/default.rules`. These are the
-command prefixes that skip an approval prompt — the Codex counterpart to
-`permissions.allow` in the Claude kit. They are not part of the original kit.
+Copy `rules/default.rules` to `~/.codex/rules/default.rules`. These command
+prefixes skip approval prompts and are the Codex counterpart to Claude Code's
+`permissions.allow` entries.
 
-Merge `config.toml` into `~/.codex/config.toml`, and expand the `~` in the
-`[[skills.config]]` paths — Codex wants them absolute.
+Merge `config.toml` into `~/.codex/config.toml`. The kit intentionally excludes
+machine-specific credential storage, writable roots, project trust, TUI theme,
+and notification setup.
 
-Do not copy app-managed configuration from another machine, including desktop
-preferences, MCP paths, marketplace sources, project trust, connector IDs, and
-workspace-specific writable paths. The `config.toml` here already excludes them:
-credential store, `writable_roots`, `[projects.*]`, `[tui]`, and notification
-setup all stay local.
+The model may invoke `go-tooling`, `grilling`, `resolving-merge-conflicts`, and
+`unslop` automatically. The other ten skills have
+`policy.allow_implicit_invocation: false` and remain available through explicit
+`$skill-name` invocation.
 
-Start a new Codex task to confirm the five enabled skills are available.
 Formatting, tests, linters, and analyzers run as verification checkpoints after
 a coherent edit set.

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Unslop Code"
+  short_description: "Remove AI-style excess from changed code"
+  default_prompt: "Use $unslop-code to remove unnecessary AI-style code from this branch."
+policy:
+  allow_implicit_invocation: false
