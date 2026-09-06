@@ -13,8 +13,7 @@ mirrors the curated installed state.
 | Configuration | `~/.claude/settings.json` | `~/.codex/config.toml` |
 | Command approvals | `permissions.allow` in `settings.json` | `~/.codex/rules/default.rules` |
 
-See each kit's `INSTALL.md` for installation. See `CHAT-SKILLS.md` for which
-skills are worth carrying into ChatGPT or Claude.ai.
+See each kit's `INSTALL.md` for installation.
 
 ## Skills
 
