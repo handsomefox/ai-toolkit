@@ -72,8 +72,8 @@ Codex expresses the same policy in `agents/openai.yaml` with
 `frontend-design` is the one skill the two kits source differently. Claude Code
 installs it as a plugin, and `settings.json` only enables what is already
 installed, so a new machine also needs
-`claude plugin install frontend-design@claude-plugins-official`. Codex has no
-plugin mechanism for skills, so `codex-kit/skills/frontend-design/` carries the
+`claude plugin install frontend-design@claude-plugins-official`. No Codex plugin
+distributes this skill, so `codex-kit/skills/frontend-design/` carries the
 upstream `SKILL.md` verbatim along with the `LICENSE.txt` its frontmatter points
 at.
 
