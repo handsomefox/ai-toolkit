@@ -2,7 +2,9 @@
 
 One workflow set, two coding harnesses. `claude-kit/` and `codex-kit/` hold the
 same 14 skills plus the global instruction file and portable configuration each
-tool reads. This repo mirrors the curated installed state.
+tool reads. A fifteenth, `frontend-design`, ships as a skill directory only in
+`codex-kit/`, because Claude Code gets it from a plugin instead. This repo
+mirrors the curated installed state.
 
 | | Claude Code | Codex |
 | --- | --- | --- |
@@ -18,6 +20,7 @@ skills are worth carrying into ChatGPT or Claude.ai.
 
 | Skill | Activation | Purpose |
 | --- | --- | --- |
+| `frontend-design` | Implicit or explicit | Aesthetic direction for new or reworked UI |
 | `go-tooling` | Implicit or explicit | Go analyzers and verification tools beyond the standard toolchain |
 | `grilling` | Implicit or explicit | Stress-test a plan through dependency-ordered questions |
 | `resolving-merge-conflicts` | Implicit or explicit | Resolve merge/rebase conflicts from both sides' intent |
@@ -35,7 +38,7 @@ skills are worth carrying into ChatGPT or Claude.ai.
 
 Claude Code invokes skills as `/name`. Codex invokes them as `$name`.
 
-The four implicit skills are reference or workflow knowledge that is useful when
+The five implicit skills are reference or workflow knowledge that is useful when
 the task itself clearly calls for it. The other ten remain explicit because
 they change workflow, scope, or output enough that the user should choose when
 they run.
@@ -65,6 +68,14 @@ non-interactive commands.
 Claude Code expresses manual invocation with `disable-model-invocation: true`.
 Codex expresses the same policy in `agents/openai.yaml` with
 `policy.allow_implicit_invocation: false`.
+
+`frontend-design` is the one skill the two kits source differently. Claude Code
+installs it as a plugin, and `settings.json` only enables what is already
+installed, so a new machine also needs
+`claude plugin install frontend-design@claude-plugins-official`. Codex has no
+plugin mechanism for skills, so `codex-kit/skills/frontend-design/` carries the
+upstream `SKILL.md` verbatim along with the `LICENSE.txt` its frontmatter points
+at.
 
 The Codex kit deliberately excludes machine-specific values such as credential
 storage, writable roots, TUI theme, project trust, and notification setup.

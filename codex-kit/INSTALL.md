@@ -14,10 +14,10 @@ Merge `config.toml` into `~/.codex/config.toml`. The kit intentionally excludes
 machine-specific credential storage, writable roots, project trust, TUI theme,
 and notification setup.
 
-The model may invoke `go-tooling`, `grilling`, `resolving-merge-conflicts`, and
-`unslop` automatically. The other ten skills have
-`policy.allow_implicit_invocation: false` and remain available through explicit
-`$skill-name` invocation.
+The model may invoke `frontend-design`, `go-tooling`, `grilling`,
+`resolving-merge-conflicts`, and `unslop` automatically. The other ten skills
+have `policy.allow_implicit_invocation: false` and remain available through
+explicit `$skill-name` invocation.
 
 Formatting, tests, linters, and analyzers run as verification checkpoints after
 a coherent edit set.

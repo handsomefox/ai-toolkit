@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontend Design"
+  short_description: "Give new UI a distinct visual identity"
+  default_prompt: "Use $frontend-design to set the aesthetic direction for this UI."
+policy:
+  allow_implicit_invocation: true
